@@ -1,0 +1,31 @@
+.SILENT: build
+.SILENT: run
+.SILENT: clean
+.SILENT: clear
+.SILENT: br
+
+bootloader_src = boot\boot.asm
+bootloader_build = boot\boot.bin
+kernel_src = kernel\kernel.asm
+kernel_build = kernel\kernel.bin
+final_image = test.flp
+
+build :
+	nasm $(bootloader_src) -f bin -o $(bootloader_build)
+	nasm $(kernel_src) -f bin -o $(kernel_build)
+	copy /b $(bootloader_build)+$(kernel_build) $(final_image)
+#	copy /b $(bootloader_build) $(final_image)
+run :
+	if exist $(final_image) qemu-system-x86_64 $(final_image)
+	cls
+
+clean : clear
+
+cbr : clear br
+
+clear:
+	if exist $(bootloader_build) del $(bootloader_build)
+	if exist $(kernel_build) del $(kernel_build)
+	if exist $(final_image) del $(final_image)
+
+br : build run
