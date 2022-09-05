@@ -6,7 +6,7 @@ Prioritys:
   - add a shell
   - add a file system
   - add sufficient commands for the shell/OS
-  (- maybe add support for .com files)
+  - (maybe add support for .com files)
 
 # building
 On windows just go to the folder and type 'make br' if you have make installed, Linux compatability will be added soon.
