@@ -12,10 +12,10 @@ shell_entry:
     call command_entry
 
 command_entry:
-    ; initialize pointer to current character in the command variable
-    mov [command_char_pointer], word command
     ; enter mainloop
     command_entry.mloop:
+        ; initialize pointer to current character in the command variable
+        mov si, word command
         ; wait for input and save it to al
         call wait_for_key
         ; see if it's a newline
@@ -26,8 +26,8 @@ command_entry:
         mov ah, 0eh
         int 10h
         ; move character into command variable
-        mov [command_char_pointer], al
-        inc word [command_char_pointer]
+        mov [si], al
+        inc si
         ; jmp to mainloop
         jmp command_entry.mloop
     ret
