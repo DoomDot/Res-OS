@@ -10,7 +10,7 @@ compare_key:
         ret
 
 
-
+; output -> key in al
 wait_for_key:
     mov ah, 00h
     int 16h
