@@ -12,7 +12,9 @@ Prioritys:
 
 <details >
   <summary>prerequisites</summary>
+  <br>
   - git
+  </br>
   - nasm
   - qemu (qemu-system-x86_64 to be more specific)
   - make
