@@ -1,31 +1,35 @@
-.SILENT: build
-.SILENT: run
-.SILENT: clean
-.SILENT: clear
-.SILENT: br
+# windows vars
+wind_bootloader_src = boot\boot.asm
+wind_bootloader_build = boot\boot.bin
+wind_kernel_src = kernel\kernel.asm
+wind_kernel_build = kernel\kernel.bin
+wind_final_image = final.flp
 
-bootloader_src = boot\boot.asm
-bootloader_build = boot\boot.bin
-kernel_src = kernel\kernel.asm
-kernel_build = kernel\kernel.bin
-final_image = test.flp
+# linux vars
+lin_bootloader_src = ./boot/boot.asm
+lin_bootloader_build = ./boot/boot.bin
+lin_kernel_src = ./kernel/kernel.asm
+lin_kernel_build = ./kernel/kernel.bin
+lin_final_image = ./final.flp
 
-build :
-	nasm $(bootloader_src) -f bin -o $(bootloader_build)
-	nasm $(kernel_src) -f bin -o $(kernel_build)
-	copy /b $(bootloader_build)+$(kernel_build) $(final_image)
-#	copy /b $(bootloader_build) $(final_image)
-run :
-	if exist $(final_image) qemu-system-x86_64 $(final_image)
-	cls
+# windows build functions
+wind_build:
+	nasm $(wind_bootloader_src) -f bin -o $(wind_bootloader_build)
+	nasm $(wind_kernel_src) -f bin -o $(wind_kernel_build)
+	copy /b $(wind_bootloader_build)+$(wind_kernel_build) $(wind_final_image)
 
-clean : clear
+wind_run:
+	qemu-system-x86_64 $(wind_final_image)
 
-cbr : clear br
+wind_br : wind_build wind_run
 
-clear:
-	if exist $(bootloader_build) del $(bootloader_build)
-	if exist $(kernel_build) del $(kernel_build)
-	if exist $(final_image) del $(final_image)
+# linux build functions
+lin_build:
+	nasm $(lin_bootloader_src) -f bin -o $(lin_bootloader_build)
+	nasm $(lin_kernel_src) -f bin -o $(lin_kernel_build)
+	cat $(lin_bootloader_build) $(lin_kernel_build) > $(lin_final_image)
 
-br : build run
+lin_run:
+	qemu-system-x86_64 $(lin_final_image)
+
+lin_br : lin_build lin_run

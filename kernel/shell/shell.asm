@@ -15,9 +15,9 @@ command_entry:
     ; initialize pointer to current character in the command variable
     mov si, word command
     ; si = command pointer
-    ; ss = command char counter
-    ; set ss to 0
-    mov ss, word 0
+    ; cx = command char counter
+    ; set cx to 0
+    mov cx, 0
     ; enter mainloop
     command_entry.mloop:
         ; wait for input and save it to al
@@ -35,7 +35,7 @@ command_entry:
         mov [si], al
         inc si
         ; increment char command counter
-        inc ss
+        inc cx
         ; jmp to mainloop
         jmp command_entry.mloop
     ret
