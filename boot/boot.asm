@@ -1,8 +1,12 @@
 [bits 16]
 [org 0x7c00]
 
-mov bp, 0x7c00
-mov sp, bp
+xor ax, ax
+mov ds, ax
+mov es, ax
+mov ss, ax
+mov sp, 0x7c00
+clc
 
 mov [bootdisk], dl
 
