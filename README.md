@@ -1,13 +1,14 @@
 # Res OS
 An 16bit real-mode Operating purely written in x86 assembly language
 
-## roadmap
 Prioritys:
-<details open>
+<details>
+  <summary>roadmap</summary>
   - add a shell
   - add a file system
   - add sufficient commands for the shell/OS
   - (maybe add support for .com files)
+</details>
 
 ## prerequisites
 <details open>
