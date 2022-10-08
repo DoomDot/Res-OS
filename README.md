@@ -11,15 +11,11 @@ Prioritys:
 </details>
 
 <details >
-  <summary>prerequisites</summary>
-  <br>
-  - git
-  <br>
-  - nasm
-  <br>
-  - qemu (qemu-system-x86_64 to be more specific)
-  <br>
-  - make
+<summary>prerequisites</summary>
+- git
+- nasm
+- qemu (qemu-system-x86_64 to be more specific)
+- make
 </details>
 
 <details>
