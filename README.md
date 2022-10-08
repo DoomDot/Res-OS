@@ -10,14 +10,16 @@ Prioritys:
   - (maybe add support for .com files)
 </details>
 
-## prerequisites
-<details open>
+<details >
+  <summary>prerequisites</summary>
   - git
   - nasm
   - qemu (qemu-system-x86_64 to be more specific)
   - make
+</details>
 
-## building
-<details open>
+<details>
+  <summary>building</summary>
   On Windows type "git clone https://github.com/DoomDot/Res-OS.git", once the download is finished type "cd Res-OS" and run make wind_br
   On Linux type "git clone https://github.com/DoomDot/Res-OS.git", once the download is finished type "cd Res-OS" and run make lin_br
+</details>
